@@ -1,0 +1,39 @@
+package tabel;
+
+import java.util.Objects;
+
+public class StringKolomType extends KolomType {
+	
+	final int maximumlengte;
+	
+	public int getMaximumLengte() {
+		return maximumlengte;
+	}
+	
+	public StringKolomType(int maxlengte) {
+		if (maxlengte < 0) {
+			throw new IllegalArgumentException("Maxlengte mag niet kleiner dan 0 zijn.");
+		}
+		maximumlengte = maxlengte;
+	}
+	
+	@Override
+	public boolean isGeldigeWaarde(Object object) {
+		if (object == null) {
+			throw new IllegalArgumentException("Object mag niet null zijn.");
+		}
+		return object instanceof String i && i.length() <= maximumlengte;
+	}
+	
+	
+	@Override
+	public boolean equals(Object object) {
+		return object instanceof StringKolomType i && i.maximumlengte == maximumlengte;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(maximumlengte);
+	}
+
+}
