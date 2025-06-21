@@ -79,5 +79,19 @@ class TabelTest {
 		t1.addRij(rij1);
 		assertEquals(3,t1.getWaarde(0,0));
 	}
+	
+	@Test
+	void testEquals() {
+		StringKolomType skt2 = new StringKolomType(10);
+		IntKolomType ikt2 = new IntKolomType(10,100);
+		String[] kolomnamen2 = {"abc","ac"};
+		KolomType[] kolomtypes2 = {skt2,ikt2};
+		Tabel t2 = new Tabel(kolomnamen2,kolomtypes2);
+		
+		assertEquals(t1,t2);
+		assertEquals(skt1,skt2);
+		assertEquals(ikt1,ikt2);
+		
+	}
 
 }
