@@ -2,14 +2,27 @@ package tabel;
 
 import java.util.Objects;
 
+/**
+ * @invar | getMaximumLengte() >= 0
+ */
 public class StringKolomType extends KolomType {
 	
+	/**
+	 * @invar | maximumlengte >= 0
+	 */
 	final int maximumlengte;
 	
+	/**
+	 * @immutable
+	 */
 	public int getMaximumLengte() {
 		return maximumlengte;
 	}
 	
+	/**
+	 * @throws IllegalArgumentException | maxlengte < 0
+	 * @post | getMaximumLengte() == maxlengte
+	 */
 	public StringKolomType(int maxlengte) {
 		if (maxlengte < 0) {
 			throw new IllegalArgumentException("Maxlengte mag niet kleiner dan 0 zijn.");
@@ -17,6 +30,10 @@ public class StringKolomType extends KolomType {
 		maximumlengte = maxlengte;
 	}
 	
+	/**
+	 * @throws IllegalArgumentException | object == null
+	 * @post | result == (object instanceof String i && i.length() <= getMaximumLengte())
+	 */
 	@Override
 	public boolean isGeldigeWaarde(Object object) {
 		if (object == null) {
@@ -25,7 +42,7 @@ public class StringKolomType extends KolomType {
 		return object instanceof String i && i.length() <= maximumlengte;
 	}
 	
-	
+
 	@Override
 	public boolean equals(Object object) {
 		return object instanceof StringKolomType i && i.maximumlengte == maximumlengte;
