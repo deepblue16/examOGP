@@ -2,6 +2,16 @@ package tabel;
 
 public abstract class KolomType {
 	
+	/**
+	 * @pre | object != null
+	 * @post | result == true || result == false
+	 * 
+	 * Gedragssubtypering (= Behavioral subtyping) betekent dat de specificatie 
+	 * van een overschrijvende methode strenger moet zijn
+	 * dan de specificatie van de overschreven methode (of equivalent).
+	 * Dit is het geval als de preconditie van de overschrijvende methode
+	 * zwakker is (of equivalent), en de postconditie strenger (of equivalent).
+	 */
 	public abstract boolean isGeldigeWaarde(Object object);
 
 }
