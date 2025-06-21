@@ -1,0 +1,7 @@
+package tabel;
+
+public abstract class KolomType {
+	
+	public abstract boolean isGeldigeWaarde(Object object);
+
+}
