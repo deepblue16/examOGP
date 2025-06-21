@@ -1,7 +1,9 @@
 package tabel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @invar | getKolomNamen() != null
@@ -145,4 +147,20 @@ public class Tabel {
 	public Object[] getRij(int rijindex) {
 		return rijen.get(rijindex).clone();		
 	}
+	
+	@Override
+	public boolean equals(Object object) {
+		return object instanceof Tabel t && Arrays.equals(getKolomNamen(),t.getKolomNamen()) 
+				&& Arrays.equals(getKolomTypes(),t.getKolomTypes()) && getAantalRijen() == t.getAantalRijen()
+				&& Arrays.deepEquals(getRijen(), t.getRijen());
+	}
+	
+	@Override
+	public int hashCode() {
+	    int result = Arrays.hashCode(getKolomNamen());
+	    result = 31 * result + Arrays.hashCode(getKolomTypes());
+	    result = 31 * result + Arrays.deepHashCode(getRijen());
+	    return result;
+	}
+
 }
