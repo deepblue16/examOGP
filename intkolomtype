@@ -2,25 +2,45 @@ package tabel;
 
 import java.util.Objects;
 
+/**
+ * @invar | getMaximumWaarde() >= getMinimumWaarde()
+ */
 public class IntKolomType extends KolomType {
 	
+	/**
+	 * @invar | maximumwaarde >= minimumwaarde
+	 */
 	final int minimumwaarde;
 	
 	final int maximumwaarde;
 	
+	/**
+	 * @immutable
+	 */
 	public int getMinimumWaarde() {
 		return minimumwaarde;
 	}
 	
+	/**
+	 * @immutable
+	 */
 	public int getMaximumWaarde() {
 		return maximumwaarde;
 	}
-	
+	/**
+	 * @pre | minwaarde <= maxwaarde
+	 * @post | getMinimumWaarde() == minwaarde
+	 * @post | getMaximumWaarde() == maxwaarde
+	 */
 	public IntKolomType(int minwaarde, int maxwaarde) {
 		minimumwaarde = minwaarde;
 		maximumwaarde = maxwaarde;
 	}
 	
+	/**
+	 * @pre | object != null
+	 * @post | result == (object instanceof Integer i && getMinimumWaarde() <= i && i <= getMaximumWaarde())
+	 */
 	@Override
 	public boolean isGeldigeWaarde(Object object) {
 		return object instanceof Integer i && minimumwaarde <= i && i <= maximumwaarde;
