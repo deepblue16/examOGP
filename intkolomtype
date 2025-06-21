@@ -1,0 +1,40 @@
+package tabel;
+
+import java.util.Objects;
+
+public class IntKolomType extends KolomType {
+	
+	final int minimumwaarde;
+	
+	final int maximumwaarde;
+	
+	public int getMinimumWaarde() {
+		return minimumwaarde;
+	}
+	
+	public int getMaximumWaarde() {
+		return maximumwaarde;
+	}
+	
+	public IntKolomType(int minwaarde, int maxwaarde) {
+		minimumwaarde = minwaarde;
+		maximumwaarde = maxwaarde;
+	}
+	
+	@Override
+	public boolean isGeldigeWaarde(Object object) {
+		return object instanceof Integer i && minimumwaarde <= i && i <= maximumwaarde;
+	}
+	
+	
+	@Override
+	public boolean equals(Object object) {
+		return object instanceof IntKolomType i && i.minimumwaarde == minimumwaarde && i.maximumwaarde == maximumwaarde;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(minimumwaarde,maximumwaarde);
+	}
+
+}
